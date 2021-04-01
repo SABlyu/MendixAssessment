@@ -11,9 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{9CB49140-A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment", "Assignment\Assignment.csproj", "{AB359035-A24D-4448-8523-9F399005D96F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainsViewer", "DomainsViewer\DomainsViewer.csproj", "{1FB192C1-54E5-4A45-A2A0-014F03C59843}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domains.Viewer", "DomainsViewer\Domains.Viewer.csproj", "{1FB192C1-54E5-4A45-A2A0-014F03C59843}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{B51B2C63-79CC-4AC5-90D3-255291D0A3AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domains.Common", "Common\Domains.Common.csproj", "{B51B2C63-79CC-4AC5-90D3-255291D0A3AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

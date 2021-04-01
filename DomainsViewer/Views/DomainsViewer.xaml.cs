@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DomainsViewerModule.Views
+namespace Domains.Viewer.Views
 {
     /// <summary>
     /// Interaction logic for DomainsViewer.xaml

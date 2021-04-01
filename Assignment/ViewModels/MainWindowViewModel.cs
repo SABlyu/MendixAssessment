@@ -1,5 +1,5 @@
-﻿using Common.Helpers;
-using DomainsViewerModule.Views;
+﻿using Domains.Common.Helpers;
+using Domains.Viewer.Views;
 using Prism.Mvvm;
 using Prism.Regions;
 

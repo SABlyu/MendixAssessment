@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DomainsViewerModule.ViewModels
+namespace Domains.Viewer.ViewModels
 {
     public class DomainsViewerViewModel : BindableBase, INavigationAware
     {

@@ -3,12 +3,12 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
     <AssemblyName>DomainsViewer</AssemblyName>
-    <RootNamespace>DomainsViewerModule</RootNamespace>
+    <RootNamespace>Domains.Viewer</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Prism.Wpf" Version="8.0.0.1909" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj" />
+    <ProjectReference Include="..\Common\Domains.Common.csproj" />
   </ItemGroup>
 </Project>

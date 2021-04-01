@@ -1,12 +1,12 @@
-﻿using Common.Helpers;
-using DomainsViewerModule.Views;
+﻿using Domains.Common.Helpers;
+using Domains.Viewer.Views;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
 
-namespace DomainsViewerModule
+namespace Domains.Viewer
 {
-    public class DomainsViewerModule : IModule
+    public class DomainsViewerModule: IModule
     {
         public void OnInitialized(IContainerProvider containerProvider)
         {

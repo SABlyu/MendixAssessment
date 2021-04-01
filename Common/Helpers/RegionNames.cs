@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Common.Helpers
+namespace Domains.Common.Helpers
 {
     public static class RegionNames
     {

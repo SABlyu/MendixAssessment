@@ -1,4 +1,5 @@
 ﻿using Assignment.Views;
+using Domains.Viewer;
 using Prism.Ioc;
 using Prism.Modularity;
 using System.Windows;
@@ -22,7 +23,7 @@ namespace Assignment
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
-            moduleCatalog.AddModule<DomainsViewerModule.DomainsViewerModule>();
+            moduleCatalog.AddModule<DomainsViewerModule>();
         }
 
     }
