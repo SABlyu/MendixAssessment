@@ -1,0 +1,43 @@
+﻿<Window x:Class="DomainModelEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DomainModelEditor"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=local:MainWindow}"
+        Title="Mendix Modeler" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" BorderThickness="0,0,0,1" BorderBrush="Black">
+            <StackPanel Orientation="Horizontal" Height="26">
+                <Label Content="Domain Model Editor" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Button Width="80" Content="Add Entity" Margin="0,3,0,3" Click="AddEntity_Click"/>
+            </StackPanel>
+        </Border>
+        <ItemsControl x:Name="EditorCanvas" Grid.Row="1" ItemsSource="{Binding Path=EntityStore}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemContainerStyle>
+                <Style TargetType="ContentPresenter">
+                    <Setter Property="Canvas.Left" Value="{Binding Path=Y}" />
+                    <Setter Property="Canvas.Top" Value="{Binding Path=X}" />
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Rectangle Width="80" Height="50" RadiusX="4" RadiusY="4" Stroke="Black" Fill="LightBlue"/>
+                        <Label Content="{Binding Path=Name}"/>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</Window>
