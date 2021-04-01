@@ -1,0 +1,11 @@
+﻿<Window x:Class="Assignment.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        xmlns:common="clr-namespace:Common.Helpers;assembly=Common"
+        Title="{Binding Title}" Height="350" Width="525">
+    <Grid>
+        <ContentControl prism:RegionManager.RegionName="{x:Static common:RegionNames.ContentRegion}" />
+    </Grid>
+</Window>
