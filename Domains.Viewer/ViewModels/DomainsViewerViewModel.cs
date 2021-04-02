@@ -1,6 +1,7 @@
 ﻿using DomainModelEditor;
 using Domains.Common.Helpers;
 using Domains.Common.Models.Bindable;
+using Domains.Common.Services;
 using Prism.Mvvm;
 using Prism.Regions;
 using System;
@@ -11,9 +12,9 @@ namespace Domains.Viewer.ViewModels
 {
     public class DomainsViewerViewModel : BindableBase, INavigationAware
     {
-        public DomainsViewerViewModel()
+        public DomainsViewerViewModel(DomainsService domainsService)
         {
-
+            _domains = domainsService;
         }
 
 
@@ -26,19 +27,13 @@ namespace Domains.Viewer.ViewModels
         {
         }
 
-        public void OnNavigatedTo(NavigationContext navigationContext)
+        public async void OnNavigatedTo(NavigationContext navigationContext)
         {
-            var entityStore = new EntityStore();
-            var demoData = new[]
-            {
-                new Tuple<int, string, int, int>(1, "Order", 100, 100),
-                new Tuple<int, string, int, int>(2, "OrderLine", 200, 200)
-            };
-            entityStore.Load(demoData);
-
-            entityStore
-                .Select(d => new BindableEntity(d))
-                .ForEach(bd => Domains.Add(bd));
+            var items = await _domains.GetItems();
+            items.ForEach(e => Domains.Add(new BindableEntity(e)));
         }
+
+
+        private readonly DomainsService _domains;
     }
 }
