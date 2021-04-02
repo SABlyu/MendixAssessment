@@ -28,5 +28,10 @@ namespace Domains.Common.Models
 
         [Column("Y")]
         public int Y { get; }
+
+        public override void ClearNavigationProperties()
+        {
+            // do nothing for now...
+        }
     }
 }

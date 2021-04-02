@@ -5,9 +5,12 @@ using System.Text;
 
 namespace Domains.Common.Models
 {
-    public class DbItem
+    public abstract class DbItem
     {
         [Key]
         public int Id { get; set; }
+
+
+        public abstract void ClearNavigationProperties();
     }
 }
