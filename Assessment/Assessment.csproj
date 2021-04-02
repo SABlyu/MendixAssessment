@@ -6,6 +6,14 @@
     <AssemblyName>Assignment</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="domains.sqlite" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="domains.sqlite">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Prism.DryIoc" Version="8.0.0.1909" />
   </ItemGroup>
   <ItemGroup>
