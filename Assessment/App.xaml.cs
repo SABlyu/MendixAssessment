@@ -1,4 +1,6 @@
 ﻿using Assignment.Views;
+using Domains.Common;
+using Domains.Common.Services;
 using Domains.Viewer;
 using Prism.Ioc;
 using Prism.Modularity;
@@ -18,7 +20,11 @@ namespace Assignment
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            var db = new AppDbContext();
+            db.Database.EnsureCreated();
 
+            containerRegistry.RegisterInstance(db);
+            containerRegistry.RegisterScoped<DomainsService>();
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
