@@ -9,6 +9,6 @@
     <PackageReference Include="Prism.Wpf" Version="8.0.0.1909" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Domains.Common.csproj" />
+    <ProjectReference Include="..\Domains.Common\Domains.Common.csproj" />
   </ItemGroup>
 </Project>

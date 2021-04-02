@@ -17,7 +17,7 @@
     <PackageReference Include="Prism.DryIoc" Version="8.0.0.1909" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Domains.Common.csproj" />
-    <ProjectReference Include="..\DomainsViewer\Domains.Viewer.csproj" />
+    <ProjectReference Include="..\Domains.Common\Domains.Common.csproj" />
+    <ProjectReference Include="..\Domains.Viewer\Domains.Viewer.csproj" />
   </ItemGroup>
 </Project>
