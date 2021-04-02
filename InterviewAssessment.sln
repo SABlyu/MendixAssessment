@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assessment", "Assessment\As
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domains.Viewer", "DomainsViewer\Domains.Viewer.csproj", "{1FB192C1-54E5-4A45-A2A0-014F03C59843}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domains.Common", "Common\Domains.Common.csproj", "{B51B2C63-79CC-4AC5-90D3-255291D0A3AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domains.Common", "Domains.Common\Domains.Common.csproj", "{B51B2C63-79CC-4AC5-90D3-255291D0A3AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
