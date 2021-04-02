@@ -10,11 +10,11 @@ namespace Domains.Common.Migrations
                 name: "Domains",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: true),
-                    X = table.Column<int>(type: "INTEGER", nullable: false),
-                    Y = table.Column<int>(type: "INTEGER", nullable: false)
+                    Name = table.Column<string>(nullable: true),
+                    X = table.Column<int>(nullable: false),
+                    Y = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

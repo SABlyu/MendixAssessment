@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
@@ -20,13 +21,10 @@ namespace Domains.Common.Models
         }
 
 
-        [Column("Name")]
         public string Name { get; }
 
-        [Column("X")]
         public int X { get; }
 
-        [Column("Y")]
         public int Y { get; }
 
         public override void ClearNavigationProperties()

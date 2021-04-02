@@ -13,7 +13,7 @@ namespace Domains.Common.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "5.0.4");
+                .HasAnnotation("ProductVersion", "3.1.13");
 
             modelBuilder.Entity("Domains.Common.Models.Entity", b =>
                 {
@@ -22,16 +22,13 @@ namespace Domains.Common.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Name");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("X")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("X");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("Y")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("Y");
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
