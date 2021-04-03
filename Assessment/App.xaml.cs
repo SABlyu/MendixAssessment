@@ -31,6 +31,5 @@ namespace Assignment
         {
             moduleCatalog.AddModule<DomainsViewerModule>();
         }
-
     }
 }
