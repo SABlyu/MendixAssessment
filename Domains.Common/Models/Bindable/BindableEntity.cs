@@ -27,5 +27,7 @@ namespace Domains.Common.Models.Bindable
             get => Model.Y;
             set => Set(value);
         }
+
+        public string FullName => $"{Name} ({X}:{Y})";
     }
 }

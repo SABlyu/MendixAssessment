@@ -6,7 +6,7 @@
              xmlns:vm="clr-namespace:Domains.Viewer.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             xmlns:prism="http://prismlibrary.com/"
+             xmlns:prism="http://prismlibrary.com/" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              prism:ViewModelLocator.AutoWireViewModel="True"
              d:DataContext="{d:DesignInstance vm:DomainsViewerViewModel}">
     <Grid>
@@ -14,12 +14,21 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Border Grid.Row="0" BorderThickness="0,0,0,1" BorderBrush="Black">
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Domain Model Editor" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <Button Content="Add Entity" Margin="0,3,0,3" Command="{Binding AddDomainCommand}"/>
-            </StackPanel>
-        </Border>
+
+        <ToolBarTray Grid.Row="0">
+            <ToolBar Style="{DynamicResource MaterialDesignToolBar}" ClipToBounds="False">
+                <TextBlock 
+                    Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+                    VerticalAlignment="Center"
+                    Text="Domain Model Editor" />
+                <Separator />
+                <Button
+                    ToolTip="Add new Domain"
+                    Content="{materialDesign:PackIcon Kind=Add}" 
+                    Command="{Binding AddDomainCommand}"/>
+            </ToolBar>
+        </ToolBarTray>
+        
         <ItemsControl x:Name="EditorCanvas" Grid.Row="1" ItemsSource="{Binding Path=Domains}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -34,10 +43,10 @@
             </ItemsControl.ItemContainerStyle>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
-                        <Rectangle Width="80" Height="50" RadiusX="4" RadiusY="4" Stroke="Black" Fill="LightBlue"/>
-                        <Label Content="{Binding Path=Name}"/>
-                    </Grid>
+                    <materialDesign:Chip
+                        Content="{Binding Name}"
+                        ToolTip="{Binding FullName}">
+                    </materialDesign:Chip>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
