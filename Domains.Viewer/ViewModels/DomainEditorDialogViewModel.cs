@@ -29,22 +29,10 @@ namespace Domains.Viewer.ViewModels
         }
 
 
-        public string Name
+        public BindableEntity Entity
         {
-            get => _name;
-            set => SetProperty(ref _name, value);
-        }
-
-        public int X
-        {
-            get => _x;
-            set => SetProperty(ref _x, value);
-        }
-
-        public int Y
-        {
-            get => _y;
-            set => SetProperty(ref _y, value);
+            get => _entity;
+            set => SetProperty(ref _entity, value);
         }
 
 
@@ -56,22 +44,23 @@ namespace Domains.Viewer.ViewModels
         {
         }
 
-        public void OnDialogOpened(IDialogParameters parameters)
+        public async void OnDialogOpened(IDialogParameters parameters)
         {
-            if (parameters.ContainsKey("entity"))
+            IsBusy = true;
+
+            if (parameters.ContainsKey("id"))
             {
-                Title = "Edit entity";
-                _entity = parameters.GetValue<BindableEntity>("entity");
+                Title = "Edit domain";
+                var id = parameters.GetValue<int>("id");
+                Entity = new BindableEntity(await _domains.GetItem(id));
             }
             else
             {
-                Title = "Create new entity";
-                _entity = new BindableEntity(new Entity());
+                Title = "Create new domain";
+                Entity = new BindableEntity(new Entity());
             }
 
-            Name = _entity.Name;
-            X = _entity.X;
-            Y = _entity.Y;
+            IsBusy = false;
         }
 
 
@@ -79,14 +68,10 @@ namespace Domains.Viewer.ViewModels
         {
             IsBusy = true;
 
-            _entity.Name = Name;
-            _entity.X = X;
-            _entity.Y = Y;
-
             var item = await _domains.UpdateItem(_entity.Model);
 
             IsBusy = false;
-            RequestClose?.Invoke(new DialogResult(ButtonResult.OK));
+            RequestClose?.Invoke(new DialogResult(ButtonResult.OK, new DialogParameters($"id={item.Id}")));
         }
 
         private void Cancel()
@@ -96,10 +81,6 @@ namespace Domains.Viewer.ViewModels
 
 
         private string _title;
-
-        private string _name;
-        private int _x;
-        private int _y;
 
         private BindableEntity _entity;
 

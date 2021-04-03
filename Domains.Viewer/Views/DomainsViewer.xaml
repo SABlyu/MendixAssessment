@@ -8,7 +8,8 @@
              d:DesignHeight="450" d:DesignWidth="800"
              xmlns:prism="http://prismlibrary.com/" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              prism:ViewModelLocator.AutoWireViewModel="True"
-             d:DataContext="{d:DesignInstance vm:DomainsViewerViewModel}">
+             d:DataContext="{d:DesignInstance vm:DomainsViewerViewModel}"
+             x:Name="PageRoot">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -44,8 +45,43 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <materialDesign:Chip
-                        Content="{Binding Name}"
                         ToolTip="{Binding FullName}">
+                        <materialDesign:Chip.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock 
+                                    Style="{StaticResource MaterialDesignSubtitle1TextBlock}" 
+                                    VerticalAlignment="Center"
+                                    Text="{Binding Name}"/>
+                                <Button
+                                    ToolTip="Edit domain" Margin="20 0 -6 0"
+                                    VerticalAlignment="Center"
+                                    Width="20" Height="20"
+                                    Command="{Binding ElementName=PageRoot, Path=DataContext.EditDomainCommand}"
+                                    CommandParameter="{Binding}">
+                                    <Button.Template>
+                                        <ControlTemplate>
+                                            <Grid>
+                                                <Ellipse x:Name="Bg" Fill="#FFA6A6A6" Stroke="White" StrokeThickness="0" />
+                                                <materialDesign:PackIcon
+                                                    Kind="Edit" Width="16" Height="16"
+                                                    HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Grid>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="Bg" Property="StrokeThickness" Value="1" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <!--<Button
+                                    Margin="0"
+                                    Style="{StaticResource MaterialDesignIconForegroundButton}"
+                                    ToolTip="MaterialDesignIconForegroundButton">
+                                    <materialDesign:PackIcon Kind="Play" />
+                                </Button>-->
+                            </StackPanel>
+                        </materialDesign:Chip.Content>
                     </materialDesign:Chip>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

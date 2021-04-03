@@ -52,7 +52,7 @@
                 IsEnabled="{Binding IsIdle}">
                 <TextBox.Text>
                     <Binding
-                        Path="Name" Mode="TwoWay"
+                        Path="Entity.Name" Mode="TwoWay"
                         UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
                             <tools:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
@@ -63,13 +63,13 @@
 
             <TextBox 
                 Style="{StaticResource DialogTextBox}"
-                Text="{Binding X, Mode=TwoWay}" InputScope="Number" 
+                Text="{Binding Entity.X, Mode=TwoWay}" InputScope="Number" 
                 materialDesign:HintAssist.Hint="X number"
                 IsEnabled="{Binding IsIdle}"/>
 
             <TextBox
                 Style="{StaticResource DialogTextBox}"
-                Text="{Binding Y, Mode=TwoWay}" InputScope="Number"
+                Text="{Binding Entity.Y, Mode=TwoWay}" InputScope="Number"
                 materialDesign:HintAssist.Hint="Y number"
                 IsEnabled="{Binding IsIdle}"/>
 

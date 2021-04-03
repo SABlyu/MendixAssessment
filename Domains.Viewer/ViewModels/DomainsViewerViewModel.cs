@@ -24,8 +24,11 @@ namespace Domains.Viewer.ViewModels
 
         public ObservableCollection<BindableEntity> Domains { get; } = new ObservableCollection<BindableEntity>();
 
-        public DelegateCommand AddDomainCommand => new DelegateCommand(() => 
-            _dialogService.ShowDialog(nameof(DomainEditorDialog)));
+        public DelegateCommand AddDomainCommand => new DelegateCommand(() =>
+            _dialogService.ShowDialog(nameof(DomainEditorDialog), OnEditorClosed));
+
+        public DelegateCommand<BindableEntity> EditDomainCommand => new DelegateCommand<BindableEntity>(d =>
+            _dialogService.ShowDialog(nameof(DomainEditorDialog), new DialogParameters($"id={d.Model.Id}"), OnEditorClosed));
 
 
         public bool IsNavigationTarget(NavigationContext navigationContext) => true;
@@ -38,6 +41,26 @@ namespace Domains.Viewer.ViewModels
         {
             var items = await _domains.GetItems();
             items.ForEach(e => Domains.Add(new BindableEntity(e)));
+        }
+
+
+        private async void OnEditorClosed(IDialogResult result)
+        {
+            if (result.Result != ButtonResult.OK)
+                return;
+            if (!result.Parameters.ContainsKey("id"))
+                return;
+
+            var id = result.Parameters.GetValue<int>("id");
+            if (id == 0)
+                return;
+
+            var savedItem = await _domains.GetItem(id);
+            var oldItem = Domains.FirstOrDefault(d => d.Model.Id == id);
+
+            if (oldItem != null)
+                Domains.Remove(oldItem);
+            Domains.Add(new BindableEntity(savedItem));
         }
 
 
