@@ -1,4 +1,5 @@
 ﻿using Domains.Common.Helpers;
+using Domains.Viewer.ViewModels;
 using Domains.Viewer.Views;
 using Prism.Ioc;
 using Prism.Modularity;
@@ -16,6 +17,7 @@ namespace Domains.Viewer
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterDialog<DomainEditorDialog, DomainEditorDialogViewModel>();
             containerRegistry.RegisterForNavigation<DomainsViewer>();
         }
     }

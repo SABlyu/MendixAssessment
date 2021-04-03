@@ -11,13 +11,13 @@
              d:DataContext="{d:DesignInstance vm:DomainsViewerViewModel}">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="26"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Border Grid.Row="0" BorderThickness="0,0,0,1" BorderBrush="Black">
-            <StackPanel Orientation="Horizontal" Height="26">
+            <StackPanel Orientation="Horizontal">
                 <Label Content="Domain Model Editor" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <Button Width="80" Content="Add Entity" Margin="0,3,0,3"/>
+                <Button Content="Add Entity" Margin="0,3,0,3" Command="{Binding AddDomainCommand}"/>
             </StackPanel>
         </Border>
         <ItemsControl x:Name="EditorCanvas" Grid.Row="1" ItemsSource="{Binding Path=Domains}">
