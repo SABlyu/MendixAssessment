@@ -68,7 +68,9 @@ namespace Domains.Viewer.ViewModels
         {
             IsBusy = true;
 
-            var item = await _domains.UpdateItem(_entity.Model);
+            var item = Entity.Model.Id == 0
+                ? await _domains.InsertItem(Entity.Model)
+                : await _domains.UpdateItem(Entity.Model);
 
             IsBusy = false;
             RequestClose?.Invoke(new DialogResult(ButtonResult.OK, new DialogParameters($"id={item.Id}")));
