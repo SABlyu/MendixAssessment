@@ -10,8 +10,14 @@ namespace Domains.Viewer.ViewModels
         public bool IsBusy
         {
             get => _isBusy;
-            set => SetProperty(ref _isBusy, value);
+            set
+            {
+                if (SetProperty(ref _isBusy, value))
+                    RaisePropertyChanged(nameof(IsIdle));
+            }
         }
+
+        public bool IsIdle => !IsBusy;
 
 
         protected bool _isBusy;

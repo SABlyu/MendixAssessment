@@ -11,5 +11,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domains.Common\Domains.Common.csproj" />
+    <ProjectReference Include="..\Domains.InterfaceTools\Domains.InterfaceTools.csproj" />
   </ItemGroup>
 </Project>
