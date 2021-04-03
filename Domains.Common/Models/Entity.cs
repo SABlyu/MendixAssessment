@@ -15,7 +15,7 @@ namespace Domains.Common.Models
         public int Y { get; set; }
 
 
-        public List<DomainProperty> ExtraProperties { get; set; }
+        public List<DomainProperty> ExtraProperties { get; set; } = new List<DomainProperty>();
 
 
         public override void ClearNavigationProperties()

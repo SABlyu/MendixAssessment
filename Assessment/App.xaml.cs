@@ -25,6 +25,7 @@ namespace Assignment
 
             containerRegistry.RegisterInstance(db);
             containerRegistry.RegisterScoped<DomainsService>();
+            containerRegistry.RegisterScoped<DomainPropertyService>();
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
