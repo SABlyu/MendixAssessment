@@ -17,12 +17,6 @@
     TextElement.FontWeight="Medium"
     TextElement.FontSize="14"
     FontFamily="{materialDesign:MaterialDesignFont}">
-    <!--<prism:Dialog.WindowStyle>
-        <Style TargetType="Window">
-            <Setter Property="ShowInTaskbar" Value="False"/>
-            <Setter Property="SizeToContent" Value="WidthAndHeight"/>
-        </Style>
-    </prism:Dialog.WindowStyle>-->
     
     <UserControl.Resources>
         <ResourceDictionary>
@@ -72,6 +66,64 @@
                 Text="{Binding Entity.Y, Mode=TwoWay}" InputScope="Number"
                 materialDesign:HintAssist.Hint="Y number"
                 IsEnabled="{Binding IsIdle}"/>
+
+            <materialDesign:Card Margin="0,15,0,0">
+                <Expander HorizontalAlignment="Stretch" Header="Domain Properties">
+                    <ScrollViewer 
+                        Margin="5,0" MinHeight="10"
+                        HorizontalScrollBarVisibility="Disabled"
+                        VerticalScrollBarVisibility="Auto" MaxHeight="200"
+                        TextBlock.Foreground="{DynamicResource MaterialDesignBody}">
+                        <StackPanel Orientation="Vertical">
+                            <ListView ItemsSource="{Binding Entity.ExtraProperties}">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <materialDesign:Card 
+                                            Background="#05ffffff" UniformCornerRadius="6" 
+                                            BorderThickness="1" BorderBrush="AntiqueWhite"
+                                            Padding="5">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBox 
+                                                    Grid.Column="0" Text="{Binding Key, Mode=TwoWay}"
+                                                    materialDesign:HintAssist.Hint="Property Key"
+                                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                    HorizontalAlignment="Stretch" Margin="0,0,5,0"/>
+
+                                                <TextBox 
+                                                    Grid.Column="1" Text="{Binding Value, Mode=TwoWay}"
+                                                    materialDesign:HintAssist.Hint="Property Value"
+                                                    Background="Transparent"
+                                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                    HorizontalAlignment="Stretch"/>
+
+                                                <Button 
+                                                    Grid.Column="2" Margin="5"
+                                                    Style="{StaticResource MaterialDesignIconButton}" 
+                                                    ToolTip="Remove item" Height="30" Width="30">
+                                                    <materialDesign:PackIcon Kind="Delete" />
+                                                </Button>
+                                            </Grid>
+                                        </materialDesign:Card>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <Button
+                                Style="{StaticResource MaterialDesignOutlinedButton}"
+                                Content="add new property"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Expander>
+            </materialDesign:Card>
 
             <ProgressBar 
                 IsIndeterminate="True" Margin="0,15,0,5"

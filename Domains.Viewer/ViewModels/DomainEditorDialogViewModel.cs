@@ -12,9 +12,12 @@ namespace Domains.Viewer.ViewModels
 {
     public class DomainEditorDialogViewModel : BusyViewModel, IDialogAware
     {
-        public DomainEditorDialogViewModel(DomainsService domainsService)
+        public DomainEditorDialogViewModel(
+            DomainPropertyService domainPropertyService,
+            DomainsService domainsService)
         {
             _domains = domainsService;
+            _domainPropertyService = domainPropertyService;
         }
 
 
@@ -87,5 +90,6 @@ namespace Domains.Viewer.ViewModels
         private BindableEntity _entity;
 
         private readonly DomainsService _domains;
+        private readonly DomainPropertyService _domainPropertyService;
     }
 }
