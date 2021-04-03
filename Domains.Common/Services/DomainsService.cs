@@ -21,9 +21,7 @@ namespace Domains.Common.Services
             _db.Domains.Remove(item);
         }
 
-        protected override IQueryable<Entity> IncludeProperties(IQueryable<Entity> query)
-        {
-            return query; // nothing to attach for now
-        }
+        protected override IQueryable<Entity> IncludeProperties(IQueryable<Entity> query) 
+            => query.Include(e => e.ExtraProperties);
     }
 }
