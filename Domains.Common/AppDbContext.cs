@@ -16,7 +16,7 @@ namespace Domains.Common
             DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Data Source=domains.sqlite");
-            //optionsBuilder.UseLazyLoadingProxies();
+            //optionsBuilder.EnableSensitiveDataLogging(true);
             base.OnConfiguring(optionsBuilder);
         }
     }

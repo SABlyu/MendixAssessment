@@ -17,7 +17,7 @@ namespace Domains.Common.Models
 
         public override void ClearNavigationProperties()
         {
-            if (Domain != null)
+            if (Domain != null && Domain.Id > 0)
                 DomainId = Domain.Id;
             Domain = null;
         }

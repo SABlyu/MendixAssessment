@@ -36,7 +36,13 @@ namespace Domains.Common.Services
             return await GetItem(item.Id);
         }
 
-        public virtual async Task UpdateItem(T entity, bool save = true)
+        public virtual async Task InsertItemNoSave(T item)
+        {
+            item.ClearNavigationProperties();
+            await _db.AddAsync<T>(item);
+        }
+
+        public virtual async Task UpdateItemNoSave(T entity)
         {
             entity.ClearNavigationProperties();
 
@@ -44,9 +50,6 @@ namespace Domains.Common.Services
             var entry = _db.Entry(item);
             entry.CurrentValues.SetValues(entity);
             entry.State = EntityState.Modified;
-
-            if (save)
-                await _db.SaveChangesAsync();
         }
 
         public virtual async Task<T> UpdateItem(T entity)
@@ -71,13 +74,21 @@ namespace Domains.Common.Services
                 if (item.Id == 0)
                     await _db.AddAsync<T>(item);
                 else
-                    await UpdateItem(item, false);
+                    await UpdateItemNoSave(item);
             }
 
             if (save)
                 await _db.SaveChangesAsync();
         }
 
+        public virtual async Task RemoveItem(T item)
+        {
+            if (item == null || item.Id == 0)
+                return;
+            var entity = await _db.Set<T>().FindAsync(item.Id);
+            _db.Set<T>().Remove(entity);
+            await _db.SaveChangesAsync();
+        }
 
         protected abstract IQueryable<T> IncludeProperties(IQueryable<T> query);
 
