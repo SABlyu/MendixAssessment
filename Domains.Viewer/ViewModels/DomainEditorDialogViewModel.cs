@@ -24,6 +24,9 @@ namespace Domains.Viewer.ViewModels
         public DelegateCommand CancelCommand => new DelegateCommand(Cancel).ObservesCanExecute(() => IsIdle);
         public DelegateCommand SaveCommand => new DelegateCommand(SaveChanges).ObservesCanExecute(() => IsIdle);
 
+        public DelegateCommand AddPropertyCommand => new DelegateCommand(AddProperty).ObservesCanExecute(() => IsIdle);
+        public DelegateCommand<BindableDomainProperty> DeletePropertyCommand
+            => new DelegateCommand<BindableDomainProperty>(DeleteProperty);
 
         public string Title
         {
@@ -82,6 +85,18 @@ namespace Domains.Viewer.ViewModels
         private void Cancel()
         {
             RequestClose?.Invoke(new DialogResult(ButtonResult.Cancel));
+        }
+
+        private void AddProperty()
+        {
+            this.Entity.ExtraProperties.Add(new BindableDomainProperty(new DomainProperty() { DomainId = Entity.Model.Id }));
+        }
+
+        private async void DeleteProperty(BindableDomainProperty property)
+        {
+            if (property.Model.Id != 0)
+                await _domainPropertyService.RemoveItem(property.Model);
+            this.Entity.ExtraProperties.Remove(property);
         }
 
 

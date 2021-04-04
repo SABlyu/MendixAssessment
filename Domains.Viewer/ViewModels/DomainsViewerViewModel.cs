@@ -1,13 +1,10 @@
-﻿using DomainModelEditor;
-using Domains.Common.Helpers;
-using Domains.Common.Models.Bindable;
+﻿using Domains.Common.Models.Bindable;
 using Domains.Common.Services;
 using Domains.Viewer.Views;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
 using Prism.Services.Dialogs;
-using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 
