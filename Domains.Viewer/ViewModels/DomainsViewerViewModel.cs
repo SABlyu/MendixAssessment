@@ -5,6 +5,7 @@ using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
 using Prism.Services.Dialogs;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 
@@ -26,6 +27,8 @@ namespace Domains.Viewer.ViewModels
 
         public DelegateCommand<BindableEntity> EditDomainCommand => new DelegateCommand<BindableEntity>(d =>
             _dialogService.ShowDialog(nameof(DomainEditorDialog), new DialogParameters($"id={d.Model.Id}"), OnEditorClosed));
+
+        public Action<BindableEntity> SaveDragResultsAction => SaveDragResults;
 
 
         public bool IsNavigationTarget(NavigationContext navigationContext) => true;
@@ -59,6 +62,9 @@ namespace Domains.Viewer.ViewModels
                 Domains.Remove(oldItem);
             Domains.Add(new BindableEntity(savedItem));
         }
+
+        private async void SaveDragResults(BindableEntity item)
+            => await _domains.UpdateItem(item.Model);
 
 
         private readonly DomainsService _domains;
